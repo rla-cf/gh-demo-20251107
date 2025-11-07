@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - deploy
+      - main
 
 env:
   AZURE_RESOURCE_GROUP: gh-demo-20251107
