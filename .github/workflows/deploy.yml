@@ -6,6 +6,8 @@ on:
       - deploy
       - main
 
+concurrency:
+  group: Deploy
 env:
   AZURE_RESOURCE_GROUP: gh-demo-20251107
   AZURE_CONTAINER_REGISTRY: ghdemo20251107
