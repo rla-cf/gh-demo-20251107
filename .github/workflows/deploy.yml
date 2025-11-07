@@ -77,11 +77,11 @@ jobs:
         with:
             resourceGroup: ${{ env.AZURE_RESOURCE_GROUP }}
             containerAppName: backend
-            imageToDeploy: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/backend:latest
+            imageToDeploy: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/backend:${{ github.sha }}
 
       - name: Deploy to Azure Container Apps - FrontEnd
         uses: azure/container-apps-deploy-action@v1
         with:
             resourceGroup: ${{ env.AZURE_RESOURCE_GROUP }}
             containerAppName: frontend
-            imageToDeploy: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/frontend:latest
+            imageToDeploy: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/frontend:${{ github.sha }}
