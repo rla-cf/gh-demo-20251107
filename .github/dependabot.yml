@@ -10,7 +10,8 @@ updates:
     schedule:
       interval: "weekly"
   - package-ecosystem: "docker" # See documentation for possible values
-    directory: "/" # Location of package manifests
+    directories:
+      - "**/*"
     schedule:
       interval: "weekly"
   - package-ecosystem: "nuget" # See documentation for possible values
@@ -18,6 +19,7 @@ updates:
     schedule:
       interval: "weekly"      
   - package-ecosystem: "dotnet-sdk" # See documentation for possible values
-    directory: "/" # Location of package manifests
+    directories:
+      - "**/*"
     schedule:
       interval: "weekly" 
