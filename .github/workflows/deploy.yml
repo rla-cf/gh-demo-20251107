@@ -61,7 +61,7 @@ jobs:
           push: true
           tags: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/backend:latest, ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/backend:${{ github.sha }}
           file: SampleApp/BackEnd/Dockerfile
-          context: SampleApp
+          #context: SampleApp
 
       - name: Build and push Docker image to ACR - FrontEnd
         uses: docker/build-push-action@v4
@@ -69,7 +69,7 @@ jobs:
           push: true
           tags: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/frontend:latest, ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/frontend:${{ github.sha }}
           file: SampleApp/FrontEnd/Dockerfile
-          context: SampleApp
+          #context: SampleApp
 
 
       - name: Deploy to Azure Container Apps - BackEnd
