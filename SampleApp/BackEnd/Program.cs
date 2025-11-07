@@ -32,15 +32,35 @@ var summaries = new[]
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
 
+string GetSummaryFromTemperature(int temperatureC)
+{
+    return temperatureC switch
+    {
+        < 0 => "Freezing",
+        < 5 => "Bracing",
+        < 10 => "Chilly",
+        < 15 => "Cool",
+        < 20 => "Mild",
+        < 25 => "Warm",
+        < 30 => "Balmy",
+        < 35 => "Hot",
+        < 40 => "Sweltering",
+        _ => "Scorching"
+    };
+}
+
 app.MapGet("/weatherforecast", () =>
 {
     var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
+    {
+        var temp = Random.Shared.Next(-20, 55);
+        return new WeatherForecast
         (
             DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
+            temp,
+            GetSummaryFromTemperature(temp)
+        );
+    })
         .ToArray();
     return forecast;
 })
